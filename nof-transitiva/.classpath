@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="jars/Build/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="jars/Build/poi-3.10-FINAL.jar"/>
+	<classpathentry kind="lib" path="jars/Build/poi-ooxml-3.10-FINAL.jar"/>
+	<classpathentry kind="lib" path="jars/Build/poi-ooxml-schemas-3.10-FINAL.jar"/>
+	<classpathentry kind="lib" path="jars/Build/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="jars/Build/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
