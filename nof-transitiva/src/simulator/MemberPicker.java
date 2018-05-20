@@ -15,9 +15,11 @@ import peer.balance.PeerInfo;
 public class MemberPicker {
 	
 	private Random randomGenerator;
+	private int fraction;
 	
-	public MemberPicker(int seed){
+	public MemberPicker(int seed, int fraction){
 		randomGenerator = new Random(seed); // construtor instanciando um random
+		this.fraction = fraction;
 	}	
 	
 	
@@ -86,19 +88,40 @@ public class MemberPicker {
 			
 			Collections.sort(peersWithPositiveBalance.get(p).getBalances()); 
 			
-			for(int i = peersWithPositiveBalance.get(p).getBalances().size()-1; i >= 0 ; i--){ // começa a varrer do fim da lista de creditos do peer da vez, o maior credito
+			int x;
+			if((peersWithPositiveBalance.get(p).getBalances().size()-1) < this.fraction){
+				x = (peersWithPositiveBalance.get(p).getBalances().size()-1);
+			}else{
+				x = this.fraction;
+			}
+			
+			for(int i = /**peersWithPositiveBalance.get(p).getBalances().size()-1**/ x; i >= 0 ; i--){ // começa a varrer do fim da lista de creditos do peer da vez, o maior credito
 				
 				PeerInfo idleTransitive2 = peersWithPositiveBalance.get(p).getBalances().get(i); // pega a informação do peer transitivo da vez
 				
 				Peer transitive2 = PeerComunity.peers.get(idleTransitive2.getId()); // pega o peer da informação acima
 				
-				for(int k = transitive2.getBalances().size()-1;k>=0;k--){
+				int y;
+				if((transitive2.getBalances().size()-1) < this.fraction){
+					y = (transitive2.getBalances().size()-1);
+				}else{
+					y = this.fraction;
+				}
+				
+				for(int k = /**transitive2.getBalances().size()-1**/ y;k>=0;k--){
 					
 					PeerInfo idleTransitive3 = transitive2.getBalances().get(k); // pega a informação do peer transitivo da vez
 					
 					Peer transitive3 = PeerComunity.peers.get(idleTransitive3.getId()); // pega o peer da informação acima
 					
-					for(int z = transitive3.getBalances().size()-1;z>=0;z--){
+					int u;
+					if((transitive3.getBalances().size()-1) < this.fraction){
+						u = (transitive3.getBalances().size()-1);
+					}else{
+						u = this.fraction;
+					}
+					
+					for(int z = /**transitive3.getBalances().size()-1**/ u;z>=0;z--){
 						
 						PeerInfo idleConsumer = transitive3.getBalances().get(z); // pega a informação do peer transitivo da vez
 						
@@ -153,13 +176,27 @@ public class MemberPicker {
 			
 			Collections.sort(peersWithPositiveBalance.get(p).getBalances()); 
 			
-			for(int i = peersWithPositiveBalance.get(p).getBalances().size()-1; i >= 0 ; i--){ // começa a varrer do fim da lista de creditos do peer da vez, o maior credito
+			int x;
+			if((peersWithPositiveBalance.get(p).getBalances().size()-1) < this.fraction){
+				x = (peersWithPositiveBalance.get(p).getBalances().size()-1);
+			}else{
+				x = this.fraction;
+			}
+			
+			for(int i = /**peersWithPositiveBalance.get(p).getBalances().size()-1**/ x; i >= 0 ; i--){ // começa a varrer do fim da lista de creditos do peer da vez, o maior credito
 				
 				PeerInfo idleTransitive2 = peersWithPositiveBalance.get(p).getBalances().get(i); // pega a informação do peer transitivo da vez
 				
 				Peer transitive2 = PeerComunity.peers.get(idleTransitive2.getId()); // pega o peer da informação acima
 				
-				for(int k = transitive2.getBalances().size()-1;k>=0;k--){
+				int y;
+				if((transitive2.getBalances().size()-1) < this.fraction){
+					y = (transitive2.getBalances().size()-1);
+				}else{
+					y = this.fraction;
+				}
+				
+				for(int k = /**transitive2.getBalances().size()-1**/ y;k>=0;k--){
 					PeerInfo idleConsumer = transitive2.getBalances().get(k); // pega a informação do peer transitivo da vez
 					
 					Peer consumer = PeerComunity.peers.get(idleConsumer.getId()); // pega o peer da informação acima
@@ -208,11 +245,19 @@ public class MemberPicker {
 				peersWithPositiveBalance.add(transitivePeer); // coloca na lista de peers com credito positivo
 		}
 		
+		
+		
 		for(Peer idlePeer : peersWithPositiveBalance){ // varre a listas de possiveis peers transitivos criada acima
 			
 			Collections.sort(idlePeer.getBalances()); // ordena a lista de creditos do peerTransitivo da vez
 			
-			for(int i = idlePeer.getBalances().size()-1; i >= 0 ; i--){ // começa a varrer do fim da lista de creditos do peer da vez, o maior credito
+			int x;
+			if((idlePeer.getBalances().size()-1) < this.fraction){
+				x = (idlePeer.getBalances().size()-1);
+			}else{
+				x = this.fraction;
+			}
+			for(int i = /**idlePeer.getBalances().size()-1**/ x; i >= 0 ; i--){ // começa a varrer do fim da lista de creditos do peer da vez, o maior credito
 				
 				PeerInfo idleConsumer = idlePeer.getBalances().get(i); // pega a informação do peer transitivo da vez
 				

@@ -34,10 +34,10 @@ public class Simulator {
 	private int seed;
 	
 	public Simulator(boolean fdNoF, boolean transitivity, double tMin, double tMax, double deltaC, 
-			int seed, Level level, PeerComunity pc, String outputFile, double kappa, int qtdePeersTransitivos) {	
+			int seed, Level level, PeerComunity pc, String outputFile, double kappa, int qtdePeersTransitivos, int fraction) {	
 		
 		peerComunity = pc;	//the constructor also creates the peers
-		memberPicker = new MemberPicker(seed);
+		memberPicker = new MemberPicker(seed, fraction);
 		market = new Market(this);
 		consumersList = new ArrayList<Integer> ();		
 		idlePeersList = new ArrayList<Integer> ();		
@@ -66,10 +66,7 @@ public class Simulator {
 	public void startSimulation(){	
 		//the constructor of PeerComunity already creates the peers
 		for(int i = 0; i < this.numSteps; i++){
-			if(i == 41){
-				System.out.println("ok");
-			}
-			
+			System.out.println("Passo: " + (i+1));
 			this.setupPeersState();
 			this.performCurrentStepDonations();
 			

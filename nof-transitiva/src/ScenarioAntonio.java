@@ -8,7 +8,7 @@ import utils.input.DataReader;
 public class ScenarioAntonio {
 	public static void main(String[] args) throws IOException {
 		int grain = 942;
-		int peerCapacity = 50;
+		int peerCapacity = 100;
 		int qtdePeersTransitivos = 5;
 		//FIXME numSteps será baseado no requestedPerPeer de peerComunity
 		//int numCiclos = 100;
@@ -20,12 +20,13 @@ public class ScenarioAntonio {
 		String outputFile_p = "C:\\Users\\antonio\\workspace\\nof-transitiva\\results\\";
 		String file = "files\\workload_clust_10spt_10ups_gwa-tudo.txt";
 		String outputFile;
-		int seed_inicial = 1;
-		int seed_final = 30;
+		int fraction = 60;
+		int seed_inicial = 18;
+		int seed_final = 18;
 		for(int seed = seed_inicial; seed < (seed_final + 1); seed++){
 			outputFile = outputFile_p + "seed-" + seed + "-";
 			PeerComunity pc = new PeerComunity(grain, file, peerCapacity);
-			Simulator sim = new Simulator(fdNof, transitivity, tMin, tMax, deltaC, seed, level, pc, outputFile, kappa, qtdePeersTransitivos);
+			Simulator sim = new Simulator(fdNof, transitivity, tMin, tMax, deltaC, seed, level, pc, outputFile, kappa, qtdePeersTransitivos, fraction);
 			sim.startSimulation();	
 		}
 		//int seed = 1;
